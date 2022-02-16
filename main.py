@@ -19,17 +19,16 @@ if __name__ == "__main__":
     dt_string = now.strftime("%d-%m-%Y-%H:%M") 
     
 
-    
-
-
-    
     for root in domains:
-        recon_folder = mkdir(RECON_FOLDER + dt_string + "/" + root + "/")
+        recon_folder = RECON_FOLDER + dt_string + "/" + root + "/"
+        recon_folder = mkdir(recon_folder)
         
         wrappers = Wrappers(recon_folder, root)
         
         wrappers.assetfinder()
-        wrappers.amass()
         wrappers.sublister()
-
+        wrappers.amass()
         wrappers.unify_domains()
+        wrappers.waybackurls()
+        wrappers.httprobe()
+        wrappers.aquatone()
