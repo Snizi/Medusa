@@ -12,15 +12,13 @@ from src.helpers import mkdir
 if __name__ == "__main__":
     
 
-    domains = parseArgs()
-
+    company_name, domains = parseArgs()
 
     now = datetime.now()
     dt_string = now.strftime("%d-%m-%Y-%H:%M") 
-    
 
     for root in domains:
-        recon_folder = RECON_FOLDER + dt_string + "/" + root + "/"
+        recon_folder = RECON_FOLDER + company_name + dt_string + "/" + root + "/"
         recon_folder = mkdir(recon_folder)
         
         wrappers = Wrappers(recon_folder, root)
